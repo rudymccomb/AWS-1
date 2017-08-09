@@ -1,3 +1,3 @@
 # AWS
 
-Contains scripts written in Python for AWS using the Boto SDK. 
+Random collection of helpful AWS scripts
