@@ -12,7 +12,7 @@ else
 fi
 
 echo getting volume id\(s\) of instance\(s\)
-vids=$(${CLIPATH}aws ec2 describe-instances --region=us-east-1 --filter "Name=instance-state-name,Values=running" Name="tag-key,Values=Name" "Name=tag-value,Values=cis-api-${ENV}" --query "Reservations[*].Instances[*].BlockDeviceMappings[*].Ebs.VolumeId" --output text)
+vids=$(${CLIPATH}aws ec2 describe-instances --region=us-east-1 --filter "Name=instance-state-name,Values=running" Name="tag-key,Values=Name" "Name=tag-value,Values=this-api-${ENV}" --query "Reservations[*].Instances[*].BlockDeviceMappings[*].Ebs.VolumeId" --output text)
 
 for id in $vids
 do
@@ -21,7 +21,7 @@ do
 done
 
 echo getting instance id\(s\)
-ids=$(${CLIPATH}aws ec2 describe-instances --region=us-east-1 --filter "Name=instance-state-name,Values=running" Name="tag-key,Values=Name" "Name=tag-value,Values=cis-api-${ENV}" --query "Reservations[*].Instances[*].InstanceId" --output text)
+ids=$(${CLIPATH}aws ec2 describe-instances --region=us-east-1 --filter "Name=instance-state-name,Values=running" Name="tag-key,Values=Name" "Name=tag-value,Values=this-api-${ENV}" --query "Reservations[*].Instances[*].InstanceId" --output text)
 
 for id in $ids
 do
@@ -38,3 +38,4 @@ do
 done
 
 echo “all done!"
+
